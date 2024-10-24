@@ -1,6 +1,8 @@
 import { config } from "../config/config.js";
 import { PACKET_TYPE } from "../constants/header.js";
+import { getHandlerById } from "../handlers/index.js";
 import { handlerError } from "../utils/error/errorHandler.js";
+import { packetParser } from "../utils/error/parser/packetParser.js";
 
 export const onData = (socket) => async (data) => {
   // 수신한 데이터를 socket의 buffer에 추가해준다.
@@ -26,9 +28,25 @@ export const onData = (socket) => async (data) => {
     // 이제 socket.buffer에서 마샬링한 패킷을 잘라준다.
     socket.buffer = socket.buffer.slice(length);
 
+    console.log(`packet: ${packet}`);
+    console.log(`packetType: ${packetType}`);
+
     try {
-      console.log(`packet: ${packet}`);
-      console.log(`packetType: ${packetType}`);
+      switch (packetType) {
+        case PACKET_TYPE.PING:
+          {
+          }
+          break;
+        case PACKET_TYPE.NORMAL:
+          {
+            const { handlerId, userId, payload } = packetParser(packet);
+
+            const handler = getHandlerById(handlerId);
+
+            await handler({ socket, userId, payload });
+          }
+          break;
+      }
     } catch (err) {
       handlerError(socket, err);
     }
