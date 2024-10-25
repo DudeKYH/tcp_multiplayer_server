@@ -2,5 +2,5 @@ export const RESPONSE_SUCCESS_CODE = 0;
 
 export const HANDLER_IDS = {
   INITIAL: 0,
-  UpdateLocation: 2,
+  UPDATE_LOCATION: 2,
 };

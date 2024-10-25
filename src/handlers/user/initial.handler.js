@@ -4,6 +4,7 @@ import {
 } from "../../constants/handlerIds.js";
 import { createResponse } from "../../utils/error/response/createResponse.js";
 
+// 초기화 관련 Handler 함수
 const initialHandler = async ({ socket, userId, payload }) => {
   const { deviceId, playerId, latency } = payload;
 

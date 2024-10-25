@@ -1,8 +1,13 @@
+import { addGame } from "../session/game.session.js";
 import { loadProtos } from "./loadProtos.js";
 
 const initServer = async () => {
   try {
+    // 모든 proto 파일들을 로딩한다.
     await loadProtos();
+
+    //
+    addGame();
   } catch (err) {
     console.error(err);
 

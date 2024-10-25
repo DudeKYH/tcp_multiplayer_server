@@ -8,4 +8,10 @@ export const packetNames = {
   response: {
     Response: "response.Response",
   },
+  game: {
+    UpdateLocationPayload: "game.UpdateLocationPayload",
+  },
+  gameNotification: {
+    UpdateLocation: "gameNotification.UpdateLocation",
+  },
 };
