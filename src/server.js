@@ -9,9 +9,8 @@ initServer()
   .then(() => {
     server.listen(config.server.port, config.server.host, () => {
       console.log(
-        `서버가 ${config.server.port}:${config.server.host}에서 실행되었습니다.`,
+        `서버가 ${config.server.host}:${config.server.port}에서 실행되었습니다.`,
       );
-      console.log(server.address());
     });
   })
   .catch((err) => {

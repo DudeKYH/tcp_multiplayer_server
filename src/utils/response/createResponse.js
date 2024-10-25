@@ -1,7 +1,7 @@
-import { config } from "../../../config/config.js";
-import { PACKET_TYPE } from "../../../constants/header.js";
-import { getProtoTypeById } from "../../../handlers/index.js";
-import { getProtoMessages } from "../../../init/loadProtos.js";
+import { config } from "../../config/config.js";
+import { PACKET_TYPE } from "../../constants/header.js";
+import { getProtoTypeById } from "../../handlers/index.js";
+import { getProtoMessages } from "../../init/loadProtos.js";
 
 export const createResponse = (
   handlerId,

@@ -1,4 +1,4 @@
-import { addGame } from "../session/game.session.js";
+import { addGame, getGameSessions } from "../session/game.session.js";
 import { loadProtos } from "./loadProtos.js";
 
 const initServer = async () => {
@@ -8,6 +8,8 @@ const initServer = async () => {
 
     //
     addGame();
+
+    console.log(getGameSessions());
   } catch (err) {
     console.error(err);
 

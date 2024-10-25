@@ -1,4 +1,5 @@
 import { config } from "../../config/config.js";
+import { createUpdateLocationPacket } from "../../utils/notification/game.notification.js";
 
 class Game {
   constructor(id) {
@@ -16,7 +17,7 @@ class Game {
     this.users.push(user);
   }
 
-  getUsers(userId) {
+  getUser(userId) {
     return this.users.find((user) => user.id === userId);
   }
 
@@ -26,6 +27,14 @@ class Game {
 
   startGame() {
     this.state = config.game.state.playing;
+  }
+
+  getAllLocation() {
+    const locationData = this.users.map((user) => {
+      return { id: user.id, playerId: user.playerId, x: user.x, y: user.y };
+    });
+
+    return createUpdateLocationPacket(locationData);
   }
 }
 

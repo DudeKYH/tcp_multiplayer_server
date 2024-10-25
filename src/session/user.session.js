@@ -2,8 +2,8 @@ import User from "../classes/models/user.class.js";
 import { userSessions } from "./session.js";
 
 // 유저를 생성하고 userSessions에 추가하는 함수
-export const addUser = (socket, id) => {
-  const user = new User(id, socket);
+export const addUser = (socket, id, playerId) => {
+  const user = new User(id, socket, playerId);
   userSessions.push(user);
   return user;
 };

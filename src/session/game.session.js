@@ -31,11 +31,11 @@ export const getGame = (id) => {
 };
 
 // gameSessions를 가져오는 함수
-export const getGameSessiosn = () => {
+export const getGameSessions = () => {
   return gameSessions;
 };
 
 // 이번 프로젝트에선 Game이 하나만 존재하므로 이 game을 반환해주는 함수를 따로 작성하였다.
-export const getUniqueGame = () => {
-  return getGameSessiosn[0];
+export const getDefaultGame = () => {
+  return getGameSessions()[0];
 };
