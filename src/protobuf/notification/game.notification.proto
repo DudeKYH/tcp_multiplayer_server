@@ -10,5 +10,7 @@ message UpdateLocation {
         uint32 playerId = 2;
         float x = 3;
         float y = 4;
+        float vecX = 5;
+        float vecY = 6;
     }
 }

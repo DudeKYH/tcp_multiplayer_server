@@ -15,7 +15,7 @@ const initialHandler = async ({ socket, userId, payload }) => {
   );
 
   // 게임에 접속한 유저를 userSession에 추가해준다.
-  const user = addUser(socket, deviceId, playerId);
+  const user = addUser(socket, deviceId, playerId, latency);
 
   // 그리고 game에 자동으로 참가시켜준다.
   const defaultGame = getDefaultGame();

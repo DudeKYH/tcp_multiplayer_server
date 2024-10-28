@@ -29,12 +29,30 @@ class Game {
     this.state = config.game.state.playing;
   }
 
-  getAllLocation(userId) {
-    const locationData = this.users
-      .filter((user) => user.id !== userId)
-      .map((user) => {
-        return { id: user.id, playerId: user.playerId, x: user.x, y: user.y };
-      });
+  getMaxLatency() {
+    let maxLatency = 0;
+
+    this.users.forEach((user) => {
+      maxLatency = Math.max(maxLatency, user.latency);
+    });
+
+    return maxLatency;
+  }
+
+  getAllLocation() {
+    const maxLatency = this.getMaxLatency();
+
+    const locationData = this.users.map((user) => {
+      const { x, y } = user.calculatePosition(maxLatency);
+      return {
+        id: user.id,
+        playerId: user.playerId,
+        x,
+        y,
+        vecX: user.velocityX,
+        vecY: user.velocityY,
+      };
+    });
 
     return createUpdateLocationPacket(locationData);
   }
