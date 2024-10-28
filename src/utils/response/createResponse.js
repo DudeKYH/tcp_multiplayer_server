@@ -3,12 +3,7 @@ import { PACKET_TYPE } from "../../constants/header.js";
 import { getProtoTypeById } from "../../handlers/index.js";
 import { getProtoMessages } from "../../init/loadProtos.js";
 
-export const createResponse = (
-  handlerId,
-  responseCode,
-  data = null,
-  userId,
-) => {
+export const createResponse = (handlerId, responseCode, data = null) => {
   const protoMessages = getProtoMessages();
 
   const responseStructure = protoMessages.response.Response;

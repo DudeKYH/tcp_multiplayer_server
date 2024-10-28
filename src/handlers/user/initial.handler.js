@@ -26,8 +26,7 @@ const initialHandler = async ({ socket, userId, payload }) => {
   const initialResponse = createResponse(
     HANDLER_IDS.INITIAL,
     RESPONSE_SUCCESS_CODE,
-    { playerId },
-    deviceId,
+    { userId: deviceId },
   );
 
   socket.write(initialResponse);

@@ -24,5 +24,4 @@ export const createUpdateLocationPacket = (users) => {
 
   const updateLocationPacket = updateLocationStructure.encode(message).finish();
   return makeNotification(updateLocationPacket, PACKET_TYPE.LOCATION);
-  return;
 };

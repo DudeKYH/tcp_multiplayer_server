@@ -29,10 +29,12 @@ class Game {
     this.state = config.game.state.playing;
   }
 
-  getAllLocation() {
-    const locationData = this.users.map((user) => {
-      return { id: user.id, playerId: user.playerId, x: user.x, y: user.y };
-    });
+  getAllLocation(userId) {
+    const locationData = this.users
+      .filter((user) => user.id !== userId)
+      .map((user) => {
+        return { id: user.id, playerId: user.playerId, x: user.x, y: user.y };
+      });
 
     return createUpdateLocationPacket(locationData);
   }

@@ -15,12 +15,12 @@ class User {
   }
 
   calculatePosition(latency) {
-    const timeDiff = latency / 1000;
-    const speed = 1;
-    const distance = speed * timeDiff;
+    // const timeDiff = latency / 1000;
+    // const speed = 1;
+    // const distance = speed * timeDiff;
 
     return {
-      x: this.x + distance,
+      x: this.x,
       y: this.y,
     };
   }
