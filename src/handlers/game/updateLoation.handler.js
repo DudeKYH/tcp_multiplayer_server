@@ -28,7 +28,7 @@ const updateLocationHandler = ({ socket, userId, payload }) => {
     user.updateVelocity(vecX, vecY);
 
     //console.log(`[${user.playerId}] Player Pos => { x: ${x}, y: ${y}}`);
-    console.log(game);
+    //console.log(game);
 
     const updateLocationPacket = game.getAllLocation();
 

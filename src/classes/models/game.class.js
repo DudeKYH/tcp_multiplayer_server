@@ -1,11 +1,14 @@
 import { config } from "../../config/config.js";
 import { createUpdateLocationPacket } from "../../utils/notification/game.notification.js";
+import IntervalManager from "../managers/interval.manager.js";
 
 class Game {
   constructor(id) {
     this.id = id;
     this.users = [];
     this.state = config.game.state.wating;
+
+    this.intervalManager = new IntervalManager();
   }
 
   // Game에 User가 참가
@@ -15,6 +18,7 @@ class Game {
     }
 
     this.users.push(user);
+    this.intervalManager.addPlayer(user.id, user.ping.bind(user), 1000);
   }
 
   getUser(userId) {
@@ -23,6 +27,7 @@ class Game {
 
   removeUser(userId) {
     this.users = this.users.filter((user) => user.id !== userId);
+    this.intervalManager.removePlayer(userId);
   }
 
   startGame() {

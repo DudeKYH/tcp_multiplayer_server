@@ -22,8 +22,19 @@ export const createUpdateLocationPacket = (users) => {
   const payload = { users };
   const message = updateLocationStructure.create(payload);
 
-  //console.log(users);
-
   const updateLocationPacket = updateLocationStructure.encode(message).finish();
   return makeNotification(updateLocationPacket, PACKET_TYPE.LOCATION);
+};
+
+export const createPingPacket = (timestamp) => {
+  const protoMessages = getProtoMessages();
+
+  const pingStructure = protoMessages.common.Ping;
+
+  const payload = { timestamp };
+  const message = pingStructure.create(payload);
+
+  const pingPacket = pingStructure.encode(message).finish();
+
+  return makeNotification(pingPacket, PACKET_TYPE.PING);
 };

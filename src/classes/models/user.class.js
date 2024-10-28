@@ -1,3 +1,5 @@
+import { createPingPacket } from "../../utils/notification/game.notification.js";
+
 class User {
   constructor(id, socket, playerId, latency) {
     this.id = id;
@@ -9,6 +11,20 @@ class User {
     this.velocityY = 0;
     this.latency = latency;
     this.lastUpdateTime = Date.now();
+  }
+
+  ping() {
+    const now = Date.now();
+
+    this.socket.write(createPingPacket(now));
+  }
+
+  handlePong(data) {
+    const now = Date.now();
+    this.latency = (now - data.timestamp) / 2;
+
+    console.log(`Received pong : latency ${this.latency}ms`);
+    console.log(`now : ${now} / pong : ${data.timestamp}`);
   }
 
   // 유저의 플레이어 위치 Update
