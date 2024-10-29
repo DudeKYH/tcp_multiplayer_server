@@ -54,8 +54,8 @@ class Game {
         playerId: user.playerId,
         x,
         y,
-        vecX: user.velocityX,
-        vecY: user.velocityY,
+        velX: user.velocityX,
+        velY: user.velocityY,
       };
     });
 
