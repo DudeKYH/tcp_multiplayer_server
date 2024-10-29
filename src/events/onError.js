@@ -1,3 +1,4 @@
+import { getDefaultGame } from "../session/game.session.js";
 import { removeUser } from "../session/user.session.js";
 import { CustomError } from "../utils/error/customError.js";
 import { handlerError } from "../utils/error/errorHandler.js";

@@ -5,6 +5,6 @@ package game;
 message UpdateLocationPayload {
     float x = 1;
     float y = 2;
-    float vecX = 3;
-    float vecY = 4;
+    float velX = 3;
+    float velY = 4;
 }

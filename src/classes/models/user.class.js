@@ -23,8 +23,8 @@ class User {
     const now = Date.now();
     this.latency = (now - data.timestamp) / 2;
 
-    console.log(`Received pong : latency ${this.latency}ms`);
-    console.log(`now : ${now} / pong : ${data.timestamp}`);
+    //console.log(`Received pong : latency ${this.latency}ms`);
+    //console.log(`now : ${now} / pong : ${data.timestamp}`);
   }
 
   // 유저의 플레이어 위치 Update
@@ -34,9 +34,9 @@ class User {
     this.lastUpdateTime = Date.now();
   }
 
-  updateVelocity(vecX, vecY) {
-    this.velocityX = vecX;
-    this.velocityY = vecY;
+  updateVelocity(velX, velY) {
+    this.velocityX = velX;
+    this.velocityY = velY;
   }
 
   // latency를 기반으로 데드레커닝을 활용하여 미래의 플레리어 위치 계산
