@@ -21,4 +21,20 @@ export const config = {
       playing: PLAYING,
     },
   },
+  databases: {
+    GAME_DB: {
+      name: DB1_NAME,
+      user: DB1_USER,
+      password: DB1_PASSWORD,
+      host: DB1_HOST,
+      port: DB1_PORT,
+    },
+    USER_DB: {
+      name: DB2_NAME,
+      user: DB2_USER,
+      password: DB2_PASSWORD,
+      host: DB2_HOST,
+      port: DB2_PORT,
+    },
+  },
 };
