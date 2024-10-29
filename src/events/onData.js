@@ -1,6 +1,7 @@
 import { config } from "../config/config.js";
 import { PACKET_TYPE } from "../constants/header.js";
 import { getHandlerById } from "../handlers/index.js";
+import pongHandler from "../handlers/pong/pong.handler.js";
 import { getProtoMessages } from "../init/loadProtos.js";
 import { getUserBySocket } from "../session/user.session.js";
 import { CustomError } from "../utils/error/customError.js";
@@ -39,19 +40,7 @@ export const onData = (socket) => async (data) => {
       switch (packetType) {
         case PACKET_TYPE.PING:
           {
-            const protoMessages = getProtoMessages();
-            const pingStructure = protoMessages.common.Ping;
-            const pingPayload = pingStructure.decode(packet);
-
-            const user = getUserBySocket(socket);
-            if (!user) {
-              throw new CustomError(
-                ErrorCodes.USER_NOT_FOUND,
-                `유저를 찾을 수 없습니다.`,
-              );
-            }
-
-            user.handlePong(pingPayload);
+            pongHandler({ socket, packet });
           }
           break;
         case PACKET_TYPE.NORMAL:

@@ -1,13 +1,12 @@
 import { getDefaultGame } from "../session/game.session.js";
 import { removeUser } from "../session/user.session.js";
 import { CustomError } from "../utils/error/customError.js";
+import { ErrorCodes } from "../utils/error/errorCodes.js";
 import { handlerError } from "../utils/error/errorHandler.js";
 
 export const onError = (socket) => (err) => {
-  console.log(`소켓 에러 : ${err.messgae}`);
-  handlerError(socket, new CustomError(500, `소켓 오류: ${err.message}`));
-
-  const errorUser = removeUser(socket);
-  const game = getDefaultGame();
-  game.removeUser(errorUser.id);
+  handlerError(
+    socket,
+    new CustomError(ErrorCodes.SOCKET_ERROR, `소켓 오류: ${err.message}`),
+  );
 };

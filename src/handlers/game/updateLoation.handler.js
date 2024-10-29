@@ -29,8 +29,7 @@ const updateLocationHandler = ({ socket, userId, payload }) => {
 
     const updateLocationPacket = game.getAllLocation();
 
-    //console.log(`[${user.playerId}] Player Pos => { x: ${x}, y: ${y}}`);
-    console.log(game);
+    //console.log(game);
 
     socket.write(updateLocationPacket);
   } catch (err) {
