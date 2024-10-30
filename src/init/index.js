@@ -1,4 +1,6 @@
+import pools from "../db/database.js";
 import { addGame, getGameSessions } from "../session/game.session.js";
+import { testAllConnections } from "../utils/db/testConnection.js";
 import { loadProtos } from "./loadProtos.js";
 
 const initServer = async () => {
@@ -6,10 +8,8 @@ const initServer = async () => {
     // 모든 proto 파일들을 로딩한다.
     await loadProtos();
 
-    //
+    // 서버 켜질 시, GameSession을 하나 만들어준다.
     addGame();
-
-    console.log(getGameSessions());
   } catch (err) {
     console.error(err);
 

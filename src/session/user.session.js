@@ -21,7 +21,7 @@ export const getUserById = (id) => {
   return userSessions.find((user) => user.id === id);
 };
 
-// 유저를 userSessions에서 socket로 찾는 함수
+// 유저를 userSessions에서 socket으로 찾는 함수
 export const getUserBySocket = (socket) => {
   const user = userSessions.find((user) => user.socket === socket);
   return user;

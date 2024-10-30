@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import pools from "../database.js";
 
 // 현재 파일의 절대 경로. 이 경로는 파일의 이름을 포함한 전체 경로
 const __filename = fileURLToPath(import.meta.url);
@@ -10,7 +11,7 @@ const __dirname = path.dirname(__filename);
 
 // sql 파일을 쿼리문으로 만들어 실행하는 함수
 const executeSqlFile = async (pool, filePath) => {
-  const sql = fs.readFileSync(filePath);
+  const sql = fs.readFileSync(filePath, "utf8");
 
   const queries = sql
     .split(";")

@@ -1,12 +1,12 @@
 import { createPingPacket } from "../../utils/notification/game.notification.js";
 
 class User {
-  constructor(id, socket, playerId, latency) {
+  constructor(id, socket, playerId, latency, x, y) {
     this.id = id;
     this.playerId = playerId;
     this.socket = socket;
-    this.x = 0;
-    this.y = 0;
+    this.x = x;
+    this.y = y;
     this.velocityX = 0;
     this.velocityY = 0;
     this.latency = latency;
@@ -39,7 +39,7 @@ class User {
     this.velocityY = velY;
   }
 
-  // latency를 기반으로 데드레커닝을 활용하여 미래의 플레리어 위치 계산
+  // latency를 기반으로 데드 레커닝 기술을하여 미래의 플레리어 위치 계산
   calculatePosition(latency) {
     const timeDiff = latency / 1000;
     const speed = 3;

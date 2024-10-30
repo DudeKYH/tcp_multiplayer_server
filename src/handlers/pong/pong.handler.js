@@ -15,6 +15,7 @@ const pongHandler = ({ socket, packet }) => {
     );
   }
 
+  // PingPong을 기준으로 유저의 레이턴시를 업데이트한다.
   user.handlePong(pongPayload);
 };
 

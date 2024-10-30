@@ -47,6 +47,8 @@ class Game {
   getAllLocation() {
     const maxLatency = this.getMaxLatency();
 
+    //console.log(`Max Latency: ${maxLatency}`);
+
     const locationData = this.users.map((user) => {
       const { x, y } = user.calculatePosition(maxLatency);
       return {

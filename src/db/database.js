@@ -21,7 +21,7 @@ const createPool = (dbConfig) => {
   pool.query = (sql, params) => {
     const date = new Date();
     console.log(
-      `${formatDate(date)}Excution Query: ${sql} ${parma ? `, ${JSON.stringify(params)}` : ``}`,
+      `[${formatDate(date)}] Excution Query: ${sql} ${params ? `, ${JSON.stringify(params)}` : ``}`,
     );
     return originQuery.call(pool, sql, params);
   };

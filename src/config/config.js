@@ -1,4 +1,13 @@
-import { CLIENT_VERSION, HOST, PORT } from "../constants/env.js";
+import {
+  CLIENT_VERSION,
+  HOST,
+  PORT,
+  USER_DB_HOST,
+  USER_DB_NAME,
+  USER_DB_PASSWORD,
+  USER_DB_PORT,
+  USER_DB_USER,
+} from "../constants/env.js";
 import { MAX_PLAYERS, PLAYING, WAITING } from "../constants/game.js";
 import { PACKET_TYPE_LENGTH, TOTAL_LENGTH } from "../constants/header.js";
 
@@ -22,19 +31,12 @@ export const config = {
     },
   },
   databases: {
-    GAME_DB: {
-      name: DB1_NAME,
-      user: DB1_USER,
-      password: DB1_PASSWORD,
-      host: DB1_HOST,
-      port: DB1_PORT,
-    },
     USER_DB: {
-      name: DB2_NAME,
-      user: DB2_USER,
-      password: DB2_PASSWORD,
-      host: DB2_HOST,
-      port: DB2_PORT,
+      name: USER_DB_NAME,
+      user: USER_DB_USER,
+      password: USER_DB_PASSWORD,
+      host: USER_DB_HOST,
+      port: USER_DB_PORT,
     },
   },
 };

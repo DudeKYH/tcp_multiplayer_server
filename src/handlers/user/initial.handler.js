@@ -2,6 +2,11 @@ import {
   HANDLER_IDS,
   RESPONSE_SUCCESS_CODE,
 } from "../../constants/handlerIds.js";
+import {
+  createUser,
+  findUserByDeviceId,
+  updateUserLogin,
+} from "../../db/user/user.db.js";
 import { getDefaultGame } from "../../session/game.session.js";
 import { addUser } from "../../session/user.session.js";
 import { createResponse } from "../../utils/response/createResponse.js";
@@ -10,12 +15,32 @@ import { createResponse } from "../../utils/response/createResponse.js";
 const initialHandler = async ({ socket, userId, payload }) => {
   const { deviceId, playerId, latency } = payload;
 
-  console.log(
-    `InitialHandler => deviceId: ${deviceId}, playerId: ${playerId}, latency: ${latency}`,
-  );
+  // USER_DB로부터 user 데이터를 가져온다
+  let userData = await findUserByDeviceId(deviceId);
+
+  if (!userData) {
+    // 만약 DB에 user 정보가 없다면 create 해준다.
+    await createUser(deviceId);
+    userData = await findUserByDeviceId(deviceId);
+  } else {
+    // 있다면 last_login 값을 update 해준다.
+    await updateUserLogin(userData.id);
+  }
+
+  console.log(userData);
+
+  // console.log(`InitialHandler => deviceId: ${deviceId}, playerId: ${playerId}, latency: ${latency}`,);
 
   // 게임에 접속한 유저를 userSession에 추가해준다.
-  const user = addUser(socket, deviceId, playerId, latency);
+  // user의 id로 deviceId를 사용한다.
+  const user = addUser(
+    socket,
+    userData.deviceId,
+    playerId,
+    latency,
+    userData.x,
+    userData.y,
+  );
 
   // 그리고 game에 자동으로 참가시켜준다.
   const defaultGame = getDefaultGame();
@@ -26,7 +51,7 @@ const initialHandler = async ({ socket, userId, payload }) => {
   const initialResponse = createResponse(
     HANDLER_IDS.INITIAL,
     RESPONSE_SUCCESS_CODE,
-    { userId: deviceId },
+    { userId: deviceId, x: userData.x, y: userData.y },
   );
 
   socket.write(initialResponse);
