@@ -34,6 +34,7 @@ class User {
     this.lastUpdateTime = Date.now();
   }
 
+  // 유저의 플레이어 속도 Update
   updateVelocity(velX, velY) {
     this.velocityX = velX;
     this.velocityY = velY;
@@ -49,6 +50,10 @@ class User {
       x: this.x + this.velocityX * distance,
       y: this.y + this.velocityY * distance,
     };
+  }
+
+  printUserInfo() {
+    return `[${this.id}] => pos: (${this.x}, ${this.y}) , latency: ${this.latency}`;
   }
 }
 

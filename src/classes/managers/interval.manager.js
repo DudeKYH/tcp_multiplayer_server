@@ -13,12 +13,8 @@ class IntervalManager extends BaseManager {
     this.intervals.get(playerId).set(type, setInterval(callback, interval));
   }
 
-  addGame(gameId, callback, interval) {
-    this.addPlayer(gameId, callback, interval, "game");
-  }
-
-  addUpdatePosition(playerId, callback, interval) {
-    this.addPlayer(gameId, callback, interval, "updatePosition");
+  addGameMonitor(gameId, callback, interval) {
+    this.addPlayer(gameId, callback, interval, "gameMonitor");
   }
 
   removePlayer(playerId) {

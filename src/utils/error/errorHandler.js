@@ -1,3 +1,4 @@
+import { saveUserPos } from "../../db/user/user.db.js";
 import { getDefaultGame } from "../../session/game.session.js";
 import { removeUser } from "../../session/user.session.js";
 import { ErrorCodes } from "./errorCodes.js";
@@ -17,11 +18,13 @@ export const handlerError = (socket, error) => {
       socket.write(errorResponse);
     } else {
       // 현재 소켓 에러인 경우는 "ECONNRESET"(클라이언트쪽에서의 연결 종료)이므로 user를 지워준다.
-      // ECONNRESET error가 발생한 후, 바로 onEnd도 호출된다.
       console.error(`소켓 에러: ${error.message}`);
 
       // userSessions에서 user 삭제
       const errorUser = removeUser(socket);
+
+      // DB에 마지막 위치 저장
+      saveUserPos(errorUser.id, errorUser.x, errorUser.y);
 
       // gameSession에서 user 삭제
       const game = getDefaultGame();

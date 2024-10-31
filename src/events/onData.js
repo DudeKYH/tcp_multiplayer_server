@@ -33,9 +33,6 @@ export const onData = (socket) => async (data) => {
     // 이제 socket.buffer에서 마샬링한 패킷을 잘라준다.
     socket.buffer = socket.buffer.slice(length);
 
-    // console.log(`packet: ${packet}`);
-    // console.log(`packetType: ${packetType}`);
-
     try {
       switch (packetType) {
         case PACKET_TYPE.PING:

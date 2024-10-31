@@ -9,6 +9,11 @@ class Game {
     this.state = config.game.state.wating;
 
     this.intervalManager = new IntervalManager();
+    this.intervalManager.addGameMonitor(
+      id,
+      this.printGameInfo.bind(this),
+      1000,
+    );
   }
 
   // Game에 User가 참가
@@ -34,6 +39,7 @@ class Game {
     this.state = config.game.state.playing;
   }
 
+  // 게임에 참가 중인 모든 유저의 latency 중 가장 느린 유저의 latency를 반환한다.
   getMaxLatency() {
     let maxLatency = 0;
 
@@ -44,10 +50,9 @@ class Game {
     return maxLatency;
   }
 
+  // 게임에 참가 중인 모든 유저의 위치를 latency 후 위치로 계산하고 반환한다.
   getAllLocation() {
     const maxLatency = this.getMaxLatency();
-
-    //console.log(`Max Latency: ${maxLatency}`);
 
     const locationData = this.users.map((user) => {
       const { x, y } = user.calculatePosition(maxLatency);
@@ -62,6 +67,16 @@ class Game {
     });
 
     return createUpdateLocationPacket(locationData);
+  }
+
+  // 게임 모니터링
+  // - 접속 중인 모든 클라이언트의 정보를 일정 시간 마다 출력해준다.
+  printGameInfo() {
+    console.log(`---------- [${this.id}] Game Monitor ----------`);
+    this.users.forEach((user, index) => {
+      console.log(`[${index}] Player : ${user.printUserInfo()}`);
+    });
+    console.log(`--------------------------------------`);
   }
 }
 

@@ -21,6 +21,7 @@ export const addGame = () => {
 export const removeGame = (id) => {
   const gameIndex = gameSessions.findIndex((game) => game.id === id);
   if (gameIndex !== -1) {
+    gameSessions[gameIndex].intervalManager.clearAll();
     return gameSessions.splice(gameIndex, 1)[0];
   }
 };

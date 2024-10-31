@@ -27,12 +27,8 @@ const initialHandler = async ({ socket, userId, payload }) => {
     await updateUserLogin(userData.id);
   }
 
-  console.log(userData);
-
-  // console.log(`InitialHandler => deviceId: ${deviceId}, playerId: ${playerId}, latency: ${latency}`,);
-
   // 게임에 접속한 유저를 userSession에 추가해준다.
-  // user의 id로 deviceId를 사용한다.
+  // user의 id로 현재 deviceId를 사용하고 있다.
   const user = addUser(
     socket,
     userData.deviceId,

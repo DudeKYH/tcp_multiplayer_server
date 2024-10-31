@@ -25,11 +25,11 @@ const updateLocationHandler = ({ socket, userId, payload }) => {
 
     // 유저의 위치를 패킷에 담긴 x, y 위치로 Update 시켜준다.
     user.updatePosition(x, y);
+    // 유저의 속도를 패킷에 담긴 vleX, velY 위치로 Update 시켜준다.
     user.updateVelocity(velX, velY);
 
+    // 게임에 접속 중인 모든 유저의 위치 정보를 클라이언트에게 알려준다.
     const updateLocationPacket = game.getAllLocation();
-
-    console.log(game);
 
     socket.write(updateLocationPacket);
   } catch (err) {

@@ -8,7 +8,8 @@ export const onEnd = (socket) => () => {
   // userSessions에서 user 삭제
   const endUser = removeUser(socket);
 
-  console.log(endUser);
+  // DB에 마지막 위치 저장
+  saveUserPos(endUser.id, endUser.x, endUser.y);
 
   // gameSession에서 user 삭제
   const game = getDefaultGame();
