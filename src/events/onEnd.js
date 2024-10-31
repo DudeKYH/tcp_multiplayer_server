@@ -1,5 +1,5 @@
+import { saveUserPos } from "../db/user/user.db.js";
 import { getDefaultGame } from "../session/game.session.js";
-import { gameSessions, userSessions } from "../session/session.js";
 import { removeUser } from "../session/user.session.js";
 
 export const onEnd = (socket) => () => {
@@ -14,7 +14,4 @@ export const onEnd = (socket) => () => {
   // gameSession에서 user 삭제
   const game = getDefaultGame();
   game.removeUser(endUser.id);
-
-  console.log(userSessions);
-  console.log(gameSessions);
 };
