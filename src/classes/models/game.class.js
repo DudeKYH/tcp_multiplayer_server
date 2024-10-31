@@ -9,6 +9,8 @@ class Game {
     this.state = config.game.state.wating;
 
     this.intervalManager = new IntervalManager();
+
+    // 게임 모니터링을 intervalManager에 등록해준다.
     this.intervalManager.addGameMonitor(
       id,
       this.printGameInfo.bind(this),
@@ -74,6 +76,8 @@ class Game {
   printGameInfo() {
     console.log(`---------- [${this.id}] Game Monitor ----------`);
     this.users.forEach((user, index) => {
+      // user.printUserInfo()
+      // - user의 deviceId, x, y, latency를 출력해준다.
       console.log(`[${index}] Player : ${user.printUserInfo()}`);
     });
     console.log(`--------------------------------------`);

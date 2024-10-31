@@ -43,7 +43,7 @@ const initialHandler = async ({ socket, userId, payload }) => {
   defaultGame.addUser(user);
 
   // initial Event에 대한 응답 패킷을 만들어준다.
-  // data : 우선 playerId만 보내주도록 한다.
+  // data : deviceId, x, y를 보내주도록 한다.
   const initialResponse = createResponse(
     HANDLER_IDS.INITIAL,
     RESPONSE_SUCCESS_CODE,
