@@ -7,10 +7,10 @@
 
 ### TIL 링크
 
-- 1: [Part 1](https://velog.io/@kyheon/TIL241024-%EB%A9%80%ED%8B%B0-%ED%94%8C%EB%A0%88%EC%9D%B4%EC%96%B4-%EA%B2%8C%EC%9E%84-%EC%84%9C%EB%B2%84-Part.1)
-- 2: [Part 2](https://velog.io/@kyheon/TIL241025-%EB%A9%80%ED%8B%B0%ED%94%8C%EB%A0%88%EC%9D%B4%EC%96%B4-%EA%B2%8C%EC%9E%84-%EC%84%9C%EB%B2%84-Part.2)
-- 3: [Part 3](https://velog.io/@kyheon/TIL241028241029-%EB%8D%B0%EB%93%9C-%EB%A0%88%EC%BB%A4%EB%8B%9D-%EB%A9%80%ED%8B%B0%ED%94%8C%EB%A0%88%EC%9D%B4%EC%96%B4-%EA%B2%8C%EC%9E%84-%EC%84%9C%EB%B2%84-Part.3)
-- 4: [Part 4](https://velog.io/@kyheon/TIL241030241031-DB-%EC%97%B0%EB%8F%99-%EB%A9%80%ED%8B%B0%ED%94%8C%EB%A0%88%EC%9D%B4%EC%96%B4-%EA%B2%8C%EC%9E%84-%EC%84%9C%EB%B2%84-Part.Final)
+- [[TIL : Part 1]](https://velog.io/@kyheon/TIL241024-%EB%A9%80%ED%8B%B0-%ED%94%8C%EB%A0%88%EC%9D%B4%EC%96%B4-%EA%B2%8C%EC%9E%84-%EC%84%9C%EB%B2%84-Part.1)
+- [[TIL : Part 2]](https://velog.io/@kyheon/TIL241025-%EB%A9%80%ED%8B%B0%ED%94%8C%EB%A0%88%EC%9D%B4%EC%96%B4-%EA%B2%8C%EC%9E%84-%EC%84%9C%EB%B2%84-Part.2)
+- [[TIL : Part 3]](https://velog.io/@kyheon/TIL241028241029-%EB%8D%B0%EB%93%9C-%EB%A0%88%EC%BB%A4%EB%8B%9D-%EB%A9%80%ED%8B%B0%ED%94%8C%EB%A0%88%EC%9D%B4%EC%96%B4-%EA%B2%8C%EC%9E%84-%EC%84%9C%EB%B2%84-Part.3)
+- [[TIL : Part 4]](https://velog.io/@kyheon/TIL241030241031-DB-%EC%97%B0%EB%8F%99-%EB%A9%80%ED%8B%B0%ED%94%8C%EB%A0%88%EC%9D%B4%EC%96%B4-%EA%B2%8C%EC%9E%84-%EC%84%9C%EB%B2%84-Part.Final)
 
 ### 도전 구현 사항
 
